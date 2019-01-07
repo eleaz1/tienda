@@ -1,0 +1,33 @@
+<div class="panel panel-default" *ngIf="shoppingCarList">
+  <h3 style="margin-left: 3%; padding-bottom: 2%">Carrito de compras</h3>
+  <div style="border-bottom: lavender solid" class="divider"></div>
+  <div class="panel-body" *ngIf="shoppingCarList?.length > 0">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li *ngFor="let shoppingCar of shoppingCarList" class="list-group-item media">
+          <div class="media-left">
+            <img class="media-object" [src]="shoppingCar.product.image" alt="Imagén" height="64px" width="64px">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">{{shoppingCar.product.name}}</h4>
+            <p style="margin: 0">Unidades: {{shoppingCar.quantity}}</p>
+            <p style="margin: 0">Subtotal: {{(shoppingCar.quantity * shoppingCar.product.price) | currency: 'USD': true}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h3>
+        <strong>Total: </strong>
+        <label>{{getTotalShoppingCar() | currency: 'USD': true}}</label>
+      </h3>
+      <a class="btn btn-primary btn-product" [routerLink]="['/home']">Cancelar</a>
+      <a class="btn btn-primary btn-product" (click)="toPay()">Pagar</a>
+    </div>
+  </div>
+  <div class="panel-body" *ngIf="shoppingCarList?.length == 0">
+    <div class="col-md-12">
+      <h3>Carrito de compras vacío</h3>
+    </div>
+  </div>
+</div>

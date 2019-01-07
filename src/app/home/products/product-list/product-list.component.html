@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="titulo">Catálogo de productos</h3>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-10">
+          <h4>¿Qué estas buscando?</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10">
+          <input [(ngModel)]="filter" name="search" #search="ngModel" id="search" class="form-control" placeholder="Buscar producto">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-body pre-scrollable" style="max-height: 75vh">
+    <div class="col-sm-6 col-md-3" *ngFor="let product of productsList | async | filterProducts: filter">
+      <div class="thumbnail">
+        <img [src]="product.image" class="img-responsive altura">
+        <div class="caption">
+          <div class="row">
+            <div class="col-md-6 col-xs-6">
+              <h3>{{product.name}}</h3>
+            </div>
+            <div class="col-md-6 col-xs-6 price">
+              <h3>
+                <label>{{product.price | currency: 'USD': true}}</label>
+              </h3>
+            </div>
+          </div>
+          <p>Unidades disponibles: {{product.quantity}}</p>
+          <div class="row">
+            <div class="col-md-4">
+              <a class="btn btn-primary btn-product" [routerLink]="['/home/product/detail', product.$key]">
+                Ver Mas</a>
+            </div>
+            <div class="col-md-4">
+              <a (click)="addProductToShoppingCar(product, quantity.valueAsNumber)" class="btn btn-success btn-product">
+                Añadir</a>
+            </div>
+            <div class="col-md-4">
+              <input type="number" #quantity class="form-control" value=1/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

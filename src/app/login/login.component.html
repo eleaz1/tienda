@@ -1,0 +1,46 @@
+<div class="container center">
+
+  <div style="color: white">
+    <div class="panel-heading col-centrada">
+      <h3 class="panel-title" style="font-weight: bold; font-size: x-large">Inicia Sesión</h3>
+    </div>
+    <div class="panel-body">
+      <form accept-charset="UTF-8" name="form" #f="ngForm" novalidate>
+
+        <div class="form-group">
+          <label for="correo" style="color: white">Correo electronico:</label>
+          <input id="correo"
+                 type="text"
+                 class="form-control"
+                 name="correo"
+                 value=""
+                 [(ngModel)]="usuario.correo"
+                 #correo="ngModel"
+                 required>
+          <span *ngIf="!correo.valid" class="help-block errores">El correo es requerido</span>
+        </div>
+
+        <div class="form-group">
+          <label for="userPassword" style="color: white">Contraseña:</label>
+          <input id="userPassword"
+                 type="password"
+                 class="form-control"
+                 name="userPassword"
+                 [(ngModel)]="usuario.userPassword"
+                 #userPassword="ngModel"
+                 required>
+          <span *ngIf="!userPassword.valid" class="help-block errores">El password es requerido</span>
+        </div>
+
+        <div class="errores">{{this.loginError}}</div>
+        <div style="margin-top:10px" class="form-group">
+          <!-- Button -->
+          <button class="btn btn-primary col-centrada" (click)="loginWithEmailAndPassword()"
+                  [disabled]="!f.form.valid ">Ingresar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

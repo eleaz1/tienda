@@ -1,0 +1,28 @@
+<div class="panel panel-default" *ngIf="product">
+  <h3 style="margin-left: 3%; padding-bottom: 2%">{{product.name}}</h3>
+  <div style="border-bottom: lavender solid" class="divider"></div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6 " style="padding: 5%;">
+        <img [src]="product.image" class="img-responsive altura" style="max-height: 300px; max-width: 300px;">
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <h3>
+            <strong>Precio: </strong>
+            <label>{{product.price | currency: 'USD': true}}</label>
+          </h3>
+          <h3>
+            <strong>Unidades disponibles: </strong>
+            <label>{{product.quantity}}</label>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class=" row">
+      <div class="col-md-12">
+        <a class="btn btn-primary btn-product" [routerLink]="['/home']">Atras</a>
+      </div>
+    </div>
+  </div>
+</div>

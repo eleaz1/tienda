@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~font-awesome/css/font-awesome.css';
+
+
+body {
+  background-image: url("/assets/backgroudPrincipal.jpg") ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 100%;
+
+
+}
+
+.fondoTransparente
+{
+  /*Div que ocupa toda la pantalla*/
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  background-color:black;
+  /*IE*/
+  filter: alpha(opacity=50);
+  /*FireFox Opera*/
+  opacity: .5;
+}
